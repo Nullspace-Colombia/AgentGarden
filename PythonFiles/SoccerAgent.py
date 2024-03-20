@@ -39,7 +39,7 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-#path = "C:/Users/gonza/AppData/Local/Temp/tmpave66q8o"
+path = "C:/Users/semil/Documents/modelos/Soccer"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "car_env")
@@ -52,6 +52,7 @@ algo = unray_config.configure_algo(ppo_config, env)
 # Train
 for i in range (100):
     algo.train()
+    print("Episodio:"f" '{i}'")
     if i % 5 == 0:
-        save_result = algo.save()#("C:/Users/gonza/AppData/Local/Temp/tmp10hjh2wd")
+        save_result = algo.save(path)#("C:/Users/gonza/AppData/Local/Temp/tmp10hjh2wd")
         print("An Algorithm checkpoint has been created inside directory: "f"'{save_result}'.")
