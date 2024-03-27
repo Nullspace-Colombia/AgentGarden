@@ -48,7 +48,7 @@ env = SingleAgentEnv(env_config, "car_env")
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
 
-algo.restore(path) #= Algorithm.from_checkpoint(path)
+#algo.restore(path) #= Algorithm.from_checkpoint(path)
 mean_ = []
 min_ = []
 max_ = []
