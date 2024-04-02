@@ -143,7 +143,7 @@ There are currently two examples ready for you to run.
 
 ![Cartpole](https://github.com/Nullspace-Colombia/unray-bridge/assets/55969494/801fcc65-ab24-41e2-9d20-6ef4fa186fda)
 
-In Unreal Engine, go to the maps folder and start the Cartpole map. Once it is running, go to your terminal an inside the unray-bridge folder run:
+In Unreal Engine, go to the maps folder and start the Cartpole map. Once it is running, go to your terminal an inside the PythonFiles folder run:
 
 ```terminal
 python Cartpole.py
@@ -158,7 +158,7 @@ If everything is correct, the cartpole will start to move.
 
 In this env, you have two agents competing in a single env. 
 
-In Unreal Engine, go to the maps folder and start the MultiAgentArena map. Once it is running, go to your terminal an inside the unray-bridge folder run:
+In Unreal Engine, go to the maps folder and start the MultiAgentArena map. Once it is running, go to your terminal an inside the PythonFiles folder run:
 
 ```terminal
 python MultiAgentArena.py
@@ -170,7 +170,7 @@ If everything is correct, the agents will start to move.
 
 ![MultiAgentArena](https://github.com/Nullspace-Colombia/unray-bridge/assets/55969494/1940d152-716d-4a2c-98f5-4383228bf384)
 
-In Unreal Engine, go to the maps folder and start the MultiAgentArena_BP map. Once it is running, go to your terminal an inside the unray-bridge folder run:
+In Unreal Engine, go to the maps folder and start the MultiAgentArena_BP map. Once it is running, go to your terminal an inside the PythonFiles folder run:
 
 ```terminal
 python ParallelMultiAgentArena.py
@@ -194,13 +194,14 @@ env_config = {
 
 Each Space is taken from BridgeSpace
 ```python
-from unray_bridge.envs.spaces import BridgeSpaces 
+from unray.envs.spaces import BridgeSpaces 
 ```
 Once you have your *env_config* dict ready, we'll create the ```Unray``` object, which will allow us to train our environment with Unray. 
 
 ```
 #Create Unray object
 
+from unray.unray_config import UnrayConfig
 unray_config = UnrayConfig()
 ```
 
@@ -210,6 +211,8 @@ Next, we'll need to create an instance of a Single Agent Environment, which take
 
 ```
 #Create Instance of Single Agent Environment
+
+from unray.envs.base_env import SingleAgentEnv
 
 env = SingleAgentEnv(env_config, 'env_name')
 ```
@@ -230,6 +233,9 @@ We'll take the classic cartpole example to start with unray.
 First, let's create the action and observation dictionary. We are using the cartpole problem definition used in Gymnausium: https://gymnasium.farama.org/environments/classic_control/cart_pole/
 
 ```python3
+
+from unray.envs.spaces import BridgeSpaces
+
 high = np.array(
                 [
                     1000,
@@ -287,7 +293,7 @@ env_config = {
 
 Each Space is taken from BridgeSpace
 ```python
-from unray_bridge.envs.spaces import BridgeSpaces 
+from unray.envs.spaces import BridgeSpaces 
 ```
 This dictionary defines the independent spaces for each of the agents. You will also notice that for each agent there are three new parameters: ```can_show```, ```can_see``` and ```obs_order```. This parameters will help us define how each agent will see the other agents in the environment.
 
@@ -303,6 +309,7 @@ Once you have your *env_config* dict ready, we'll create the ```Unray``` object,
 ```
 #Create Unray object
 
+from unray.unray_config import UnrayConfig
 unray_config = UnrayConfig()
 ```
 
@@ -313,6 +320,8 @@ Next, we'll need to create an instance of a MultiAgent Environment, which takes 
 ```
 #Create Instance of MultiAgent Environment
 
+from unray.envs.base_env import MultiAgentEnv
+
 env = MultiAgentEnv(env_config, 'env_name')
 ```
 
@@ -320,6 +329,7 @@ Now, we can use unray without problem. After creating the config for our algorit
 
 ```
 #Create Algo Instance
+
 algo = unray_config.configure_algo(algo_config, env)
 ```
 
@@ -345,6 +355,9 @@ Hence we got:
 Defining the env_config as follows: 
 
 ```python
+
+from unray.envs.spaces import BridgeSpaces
+
 env_config  = {
         "agent-1":{
             "observation": BridgeSpaces.MultiDiscrete([64, 64]),
@@ -372,7 +385,10 @@ env_config  = {
 Configure the environment
 
 ```python
-    
+
+    from unray.envs.base_env import MultiAgentEnv
+    from unray.unray_config import UnrayConfig
+
     unray_config = UnrayConfig()
     arena = MultiAgentEnv(env_config, "multiagents-arena")
     algo = unray_config.configure_algo(ppo_config, arena)
