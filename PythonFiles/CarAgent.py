@@ -16,7 +16,6 @@ ppo_config = ppo_config.framework("torch")
 ppo_config = ppo_config.resources(num_gpus=0)
 ppo_config = ppo_config.rollouts(num_rollout_workers=0)
 
-
 env_config = {
     "observation": BridgeSpaces.Box(-high, high),
     "action":BridgeSpaces.Discrete(2)
