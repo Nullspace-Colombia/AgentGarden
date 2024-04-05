@@ -23,7 +23,7 @@ act_config = {
 
 ppo_config = PPOConfig()
 
-#ppo_config = ppo_config.training(gamma=0.9, lr=0.01, kl_coeff=0.3, vf_clip_param=20000)
+ppo_config = ppo_config.training(gamma=0.9, lr=0.1, entropy_coeff=0.01)
 ppo_config = ppo_config.resources(num_gpus=0)
 ppo_config = ppo_config.rollouts(num_rollout_workers=0)
 
@@ -48,31 +48,33 @@ env = SingleAgentEnv(env_config, "car_env")
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
 
-#algo.restore(path) #= Algorithm.from_checkpoint(path)
+algo.restore(path) #= Algorithm.from_checkpoint(path)
 mean_ = []
 min_ = []
 max_ = []
 episodes = []
 # Train
-for i in range (20):
+for i in range (200):
     result = algo.train()
     print("Episodio:"f" '{i}'")
     mean_.append(result['episode_reward_mean'])
     min_.append(result['episode_reward_min'])
     max_.append(result['episode_reward_max'])
     episodes.append(result['episodes_total'])
+
+
     if i % 5 == 0:
         save_result = algo.save(path)#("C:/Users/gonza/AppData/Local/Temp/tmp10hjh2wd")
         print("An Algorithm checkpoint has been created inside directory: "f"'{save_result}'.")
+        iters = [i for i in range(200)]
+        plt.plot(iters, mean_, color='black', label='mean')
+        plt.plot(iters, min_, ls='dashed', color='red', label='min')
+        plt.plot(iters, max_, ls='dashed', color='blue', label='max')
+        plt.xlabel('training steps')
+        plt.title('PPO 15 Iteration training')
+        plt.legend()
+        plt.ylabel('reward')
+        plt.savefig('C:/Users/semil/Documents/modelos/Soccer/imagen.png')
 
 
 
-iters = [i for i in range(20)]
-plt.plot(iters, mean_, color='black', label='mean')
-plt.plot(iters, min_, ls='dashed', color='red', label='min')
-plt.plot(iters, max_, ls='dashed', color='blue', label='max')
-plt.xlabel('training steps')
-plt.title('PPO 15 Iteration training')
-plt.legend()
-plt.ylabel('reward')
-plt.savefig('C:/Users/semil/Documents/modelos/Soccer/imagen.png')
