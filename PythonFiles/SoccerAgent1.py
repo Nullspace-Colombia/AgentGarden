@@ -17,7 +17,7 @@ obs_config = {
 }
 
 act_config = {
-    "space": BridgeSpaces.MultiDiscrete([2,3]),
+    "space": BridgeSpaces.MultiDiscrete([3]),
     "description": "Acciones"
 }
 
