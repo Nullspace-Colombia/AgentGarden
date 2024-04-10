@@ -6,7 +6,7 @@ Framework for communication between Unreal Engine and Python.
 
 ### Engine Version
 
-We are currently using Unreal Engine 5.2. We recommend using the same version to ensure project stability.
+We are currently using Unreal Engine 5.3. We recommend using the same version to ensure project stability.
 
 ### Plugin Version
 
