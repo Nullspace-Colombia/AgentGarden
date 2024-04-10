@@ -2,6 +2,20 @@
 
 Framework for communication between Unreal Engine and Python.
 
+# Unreal Engine
+
+### Engine Version
+
+We are currently using Unreal Engine 5.2. We recommend using the same version to ensure project stability.
+
+### Plugin Version
+
+We currently have version 1.2 of the plugin. If you still have version 1.0 please update to this new version.
+
+Mistakes regarding the parallel training of Single Agent Environment have been fixed. 
+
+Inference module for trained models has been added.
+
 # unray | Python package
 Install the given dependencies. This is just the python-side of the framework. Remember to create or to open a UE5 scene with the official unray-bridge blueprints.
 ```terminal
@@ -52,21 +66,9 @@ python ParallelMultiAgentArena.py
 
 If everything is correct, the four envs will start to move. 
 
-# Unreal Engine
 
-### Engine Version
 
-We are currently using Unreal Engine 5.2. We recommend using the same version to ensure project stability.
-
-### Plugin Version
-
-We currently have version 1.2 of the plugin. If you still have version 1.0 please update to this new version.
-
-Mistakes regarding the parallel training of Single Agent Environment have been fixed. 
-
-Inference module for trained models has been added.
-
-## Project Files
+# Project Files | UE5
 
 In the Maps folder you'll find some examples to run:
 
