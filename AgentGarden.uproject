@@ -18,6 +18,11 @@
 		{
 			"Name": "ChaosVehiclesPlugin",
 			"Enabled": true
+		},
+		{
+			"Name": "unray",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/b756d79039204b4f9bceb22abf8c7ee0"
 		}
 	]
 }
