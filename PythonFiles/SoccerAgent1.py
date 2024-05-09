@@ -48,13 +48,13 @@ env = SingleAgentEnv(env_config, "car_env")
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
 
-#algo.restore(path) #= Algorithm.from_checkpoint(path)
+algo.restore(path) #= Algorithm.from_checkpoint(path)
 mean_ = []
 min_ = []
 max_ = []
 episodes = []
 # Train
-for i in range (200):
+for i in range (31):
     result = algo.train()
     print("Episodio:"f" '{i}'")
     mean_.append(result['episode_reward_mean'])
@@ -62,12 +62,15 @@ for i in range (200):
     max_.append(result['episode_reward_max'])
     episodes.append(result['episodes_total'])
     print(result)
+    print(len(min_))
 
     if i % 5 == 0:
+
         save_result = algo.save(path)#("C:/Users/gonza/AppData/Local/Temp/tmp10hjh2wd")
         print("An Algorithm checkpoint has been created inside directory: "f"'{save_result}'.")
-        '''
-        iters = [i for i in range(200)]
+
+        iters = [j for j in range(i+1)]
+        plt.figure()
         plt.plot(iters, mean_, color='black', label='mean')
         plt.plot(iters, min_, ls='dashed', color='red', label='min')
         plt.plot(iters, max_, ls='dashed', color='blue', label='max')
@@ -75,8 +78,8 @@ for i in range (200):
         plt.title('PPO 15 Iteration training')
         plt.legend()
         plt.ylabel('reward')
-        plt.savefig(""f"'{path}'/imagen.png")
-        '''
+        plt.savefig(f"Imagenes/iter_{i}")
+
 
 
 
