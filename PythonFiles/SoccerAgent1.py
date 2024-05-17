@@ -23,7 +23,7 @@ act_config = {
 
 ppo_config = PPOConfig()
 
-#ppo_config = ppo_config.training(gamma=0.9, lr=0.1, entropy_coeff=0.01, kl_coeff = 0.0)
+ppo_config = ppo_config.training(gamma=0.95, lr=0.0001, entropy_coeff=0.0001, clip_param=0.1)
 ppo_config = ppo_config.resources(num_gpus=0)
 ppo_config = ppo_config.rollouts(num_rollout_workers=0)
 
@@ -40,7 +40,7 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/semil/Documents/modelos/Soccer/V2" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/semil/Documents/modelos/Soccer/V4" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "car_env")
