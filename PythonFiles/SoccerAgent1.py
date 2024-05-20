@@ -40,7 +40,7 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/semil/Documents/modelos/Soccer/V4" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/semil/Documents/modelos/Soccer/V9" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "car_env")
