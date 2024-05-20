@@ -17,7 +17,7 @@ obs_config = {
 }
 
 act_config = {
-    "space": BridgeSpaces.MultiDiscrete([3]),
+    "space": BridgeSpaces.Discrete(3),
     "description": "Acciones"
 }
 
@@ -33,20 +33,22 @@ ppo_config = ppo_config.rollouts(num_rollout_workers=0)
 # All actions can be performed at the same time, and have state 0 and 1, for pressed and not pressed
 env_config = {
     "observation": BridgeSpaces.Box(-high, high),
-    "action":BridgeSpaces.MultiDiscrete([2,3])
+    "action":BridgeSpaces.Discrete(3)
 }
 
 # Create unray object
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/semil/Documents/modelos/Soccer/V4" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/semil/Documents/modelos/Soccer/V8" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "car_env")
 
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
+
+
 
 algo.restore(path) #= Algorithm.from_checkpoint(path)
 mean_ = []
