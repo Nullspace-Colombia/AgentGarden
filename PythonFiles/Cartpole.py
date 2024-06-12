@@ -25,9 +25,9 @@ if __name__ == '__main__':
       
     ppo_config = PPOConfig()
 
-    ppo_config = ppo_config.framework("torch")
+    
     ppo_config = ppo_config.resources(num_gpus=0)  
-    ppo_config = ppo_config.rollouts(num_rollout_workers=0) 
+    ppo_config = ppo_config.rollouts(num_rollout_workers=3) 
 
 
     cartpole = SingleAgentEnv(env_config, "CartpoleEnv")

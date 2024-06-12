@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 high = np.array(
     [10000]*36,
-    dtype=np.float32,
+    dtype=np.float64,
 )
 
 obs_config = {
@@ -23,9 +23,9 @@ act_config = {
 
 ppo_config = PPOConfig()
 
-ppo_config = ppo_config.training(gamma=0.99, lr=0.0001, clip_param=0.2, lambda_=0.95)
-ppo_config = ppo_config.resources(num_gpus=1)
-ppo_config = ppo_config.rollouts(num_rollout_workers=0)
+#ppo_config = ppo_config.training(gamma=0.99, lr=0.0001, clip_param=0.2, lambda_=0.95)
+ppo_config = ppo_config.resources(num_gpus=0)
+ppo_config = ppo_config.rollouts(num_rollout_workers=2) 
 
 
 
@@ -40,7 +40,7 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/Valentina/Documents/1_Universidad/AI/4_Tests/Soccer_Agent/R5" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/Valentina/Documents/1_Universidad/AI/4_Tests/Soccer_Agent/Parallel" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2" R5
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "soccer")
@@ -48,7 +48,7 @@ env = SingleAgentEnv(env_config, "soccer")
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
 
-algo.restore(path) #= Algorithm.from_checkpoint(path)
+#algo.restore(path) #= Algorithm.from_checkpoint(path)
 mean_ = []
 min_ = []
 max_ = []
