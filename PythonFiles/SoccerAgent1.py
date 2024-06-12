@@ -23,8 +23,8 @@ act_config = {
 
 ppo_config = PPOConfig()
 
-ppo_config = ppo_config.training(gamma=0.95, lr=0.0001, entropy_coeff=0.0001, clip_param=0.1)
-ppo_config = ppo_config.resources(num_gpus=0)
+#ppo_config = ppo_config.training(gamma=0.95, lr=0.0001, entropy_coeff=0.0001, clip_param=0.1)
+ppo_config = ppo_config.resources(num_gpus=1)
 ppo_config = ppo_config.rollouts(num_rollout_workers=0)
 
 
@@ -33,21 +33,20 @@ ppo_config = ppo_config.rollouts(num_rollout_workers=0)
 # All actions can be performed at the same time, and have state 0 and 1, for pressed and not pressed
 env_config = {
     "observation": BridgeSpaces.Box(-high, high),
-    "action":BridgeSpaces.Discrete(3)
+    "action":BridgeSpaces.MultiDiscrete([3,2])
 }
 
 # Create unray object
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/semil/Documents/modelos/Soccer/V8" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/semil/Documents/modelos/Soccer/V19""E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "car_env")
 
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
-
 
 
 algo.restore(path) #= Algorithm.from_checkpoint(path)
