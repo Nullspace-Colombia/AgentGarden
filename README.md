@@ -19,7 +19,7 @@ Inference module for trained models has been added.
 # unray | Python package
 Install the given dependencies. This is just the python-side of the framework. Remember to create or to open a UE5 scene with the official unray-bridge blueprints.
 ```terminal
-pip install ray[rllib] torch tensorflow
+pip install ray[rllib]==2.10 torch tensorflow
 pip install unray
 ```
 We recommend conda for creating a virtualenv with anaconda and installing the dependendencies. Currently, Ray is available in Python 3.10 or less, so we recommend creating a virtualenv with version 3.10.
