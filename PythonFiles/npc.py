@@ -13,9 +13,9 @@ high = np.array(
 
 ppo_config = PPOConfig()
 
-#ppo_config = ppo_config.training(gamma=0.99, lr=0.0001, clip_param=0.2, lambda_=0.95)
-ppo_config = ppo_config.resources(num_gpus=1)
-ppo_config = ppo_config.rollouts(num_rollout_workers=0)
+ppo_config = ppo_config.training(gamma=0.99, lr=0.0001, clip_param=0.2, lambda_=0.95)
+ppo_config = ppo_config.resources(num_gpus=1, num_env_runners=2)
+#Wppo_config = ppo_config.rollouts(num_rollout_workers=0)
 
 
 
@@ -31,7 +31,7 @@ unray_config = UnrayConfig()
 
 # Path
 
-path = "C:/Users/Valentina/Documents/1_Universidad/AI/4_Tests/NPC/R3" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/Valentina/Documents/1_Universidad/AI/4_Tests/NPC/R4" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "npc")
