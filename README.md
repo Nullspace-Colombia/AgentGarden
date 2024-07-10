@@ -134,7 +134,17 @@ To ensure the framework can recognise all the agents in your environment, add ea
 
 Remember that for each agent in your env, you'll have to implement the Reward, Done, Reset, Get State and Step functions.
 
+## Recommended Configurations
 
+To ensure a better performance from the plugin, we recommend you configure the following settings of your proyect:
+
+1. Go to Edit -> Project Settings, and in the search bar, search for "iteration". You'll find a property called ```Maximum Loop Iteration Count```. Take it up to the maximun, you can do that by placing your cursor in the value box and drag to the right until the value reaches its maximum. This will allow the code to do more than 18 iterations of training.
+
+![image](https://github.com/Nullspace-Colombia/AgentGarden/assets/55969494/6f1ceb08-f1a2-41db-ad8b-fbf61be4c45f)
+
+2. Go to Edit -> Editor Preferences, and in the search bar, search for "cpu". You'll find a property called ```Use less CPU when in background``` and check the box. This will help so that you don't have to focus on the game window all the time while training.
+
+![image](https://github.com/Nullspace-Colombia/AgentGarden/assets/55969494/e81d1ed3-249f-48be-a0ca-3f3fa4be2591)
 
 ## Parallel Trainning
 
