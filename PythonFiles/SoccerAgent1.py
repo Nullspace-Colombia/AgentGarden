@@ -23,7 +23,7 @@ act_config = {
 
 ppo_config = PPOConfig()
 
-#ppo_config = ppo_config.training(gamma=0.95, lr=0.0001, entropy_coeff=0.0001, clip_param=0.1)
+ppo_config = ppo_config.training(gamma=0.95, lr=0.0001, entropy_coeff=0.0001, clip_param=0.1)
 ppo_config = ppo_config.resources(num_gpus=1)
 ppo_config = ppo_config.rollouts(num_rollout_workers=0)
 
@@ -40,7 +40,7 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/semil/Documents/modelos/Soccer/V19""E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/semil/Documents/modelos/Soccer/V20" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "car_env")
@@ -55,7 +55,7 @@ min_ = []
 max_ = []
 episodes = []
 # Train
-for i in range (31):
+for i in range (100):
     result = algo.train()
     print("Episodio:"f" '{i}'")
     mean_.append(result['episode_reward_mean'])
