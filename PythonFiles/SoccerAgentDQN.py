@@ -1,4 +1,5 @@
 from ray.rllib.algorithms.dqn import DQNConfig
+from ray.rllib.algorithms.sac.sac import SACConfig
 from unray.envs.base_env import SingleAgentEnv
 from unray.envs.spaces import BridgeSpaces
 import numpy as np
@@ -40,14 +41,14 @@ dqn_config = dqn_config.rollouts(num_rollout_workers=0)
 # Configuración del entorno
 env_config = {
     "observation": BridgeSpaces.Box(-high, high),
-    "action": action_space
+    "action": BridgeSpaces.Discrete(5)
 }
 
 # Crear instancia de la configuración Unray
 unray_config = UnrayConfig()
 
 # Ruta para guardar y cargar el modelo
-path = "C:/Users/semil/Documents/modelos/SoccerDQN/V1"
+path = "C:/Users/Valentina/3_AI/4_Tests/Soccer_Agent/DQN/T1"
 
 # Crear instancia del entorno
 env = SingleAgentEnv(env_config, "env1")
