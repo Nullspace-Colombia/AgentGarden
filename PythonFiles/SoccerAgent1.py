@@ -25,7 +25,7 @@ ppo_config = PPOConfig()
 
 #ppo_config = ppo_config.training(gamma=0.99, lr=0.0001, clip_param=0.2, lambda_=0.95)
 ppo_config = ppo_config.resources(num_gpus=1)
-ppo_config = ppo_config.rollouts(num_rollout_workers=2)
+ppo_config = ppo_config.rollouts(num_rollout_workers=4)
 
 
 
