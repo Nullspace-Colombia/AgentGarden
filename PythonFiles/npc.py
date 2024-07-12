@@ -31,7 +31,7 @@ unray_config = UnrayConfig()
 
 # Path
 
-path = "C:/Users/Valentina/Documents/1_Universidad/AI/4_Tests/NPC/R5" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/Valentina/Documents/1_Universidad/AI/4_Tests/NPC/R6" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "npc")
@@ -39,7 +39,7 @@ env = SingleAgentEnv(env_config, "npc")
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
 
-algo.restore(path) #= Algorithm.from_checkpoint(path)
+#algo.restore(path) #= Algorithm.from_checkpoint(path)
 mean_ = []
 min_ = []
 max_ = []
