@@ -11,21 +11,12 @@ high = np.array(
     dtype=np.float64,
 )
 
-obs_config = {
-    "space": BridgeSpaces.Box(-high, high),
-    "description": "Observaciones"
-}
-
-act_config = {
-    "space": BridgeSpaces.Discrete(5),
-    "description": "Acciones"
-}
 
 ppo_config = PPOConfig()
 
 ppo_config = ppo_config.training(gamma=0.99, lr=0.0001, clip_param=0.2, lambda_=0.95)
 ppo_config = ppo_config.resources(num_gpus=1)
-ppo_config = ppo_config.rollouts(num_rollout_workers=1)
+ppo_config = ppo_config.rollouts(num_rollout_workers=6)
 
 
 
@@ -40,7 +31,7 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/Valentina/Documents/1_Universidad/AI/4_Tests/Soccer_Agent/Parallel" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2" R5
+path = "PythonFiles/checkpoints/SoccerAgent/T1" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2" R5
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "soccer")
@@ -54,7 +45,7 @@ min_ = []
 max_ = []
 episodes = []
 # Train
-for i in range (51):
+for i in range (26):
     print("Iteración:"f" '{i}'")
     result = algo.train()
     #mean_.append(result['episode_reward_mean'])
