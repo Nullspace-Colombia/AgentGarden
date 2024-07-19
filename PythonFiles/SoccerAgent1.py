@@ -31,21 +31,21 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-path = "PythonFiles/checkpoints/SoccerAgent/T1" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2" R5
-
+path = "PythonFiles/checkpoints/SoccerAgent/T1_P2" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2" R5
+path2 = "PythonFiles/checkpoints/SoccerAgent/T1_P2_2"
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "soccer")
 
 # Create algo instance
 algo = unray_config.configure_algo(ppo_config, env)
 
-algo.restore(path) #= Algorithm.from_checkpoint(path)
+algo.restore(path2) #= Algorithm.from_checkpoint(path)
 mean_ = []
 min_ = []
 max_ = []
 episodes = []
 # Train
-for i in range (26):
+for i in range (101):
     print("Iteración:"f" '{i}'")
     result = algo.train()
     #mean_.append(result['episode_reward_mean'])
@@ -58,7 +58,7 @@ for i in range (26):
 
     if i % 5 == 0:
 
-        save_result = algo.save(path)#("C:/Users/gonza/AppData/Local/Temp/tmp10hjh2wd")
+        save_result = algo.save(path2)#("C:/Users/gonza/AppData/Local/Temp/tmp10hjh2wd")
         print("An Algorithm checkpoint has been created inside directory: "f"'{save_result}'.")
         """
         iters = [j for j in range(i+1)]
