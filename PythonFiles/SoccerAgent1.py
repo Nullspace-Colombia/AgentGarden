@@ -45,7 +45,7 @@ min_ = []
 max_ = []
 episodes = []
 # Train
-for i in range (101):
+for i in range (201):
     print("Iteración:"f" '{i}'")
     result = algo.train()
     #mean_.append(result['episode_reward_mean'])
