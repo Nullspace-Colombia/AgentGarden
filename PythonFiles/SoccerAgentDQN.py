@@ -22,7 +22,7 @@ dqn_config = dqn_config.training(
     #target_network_update_freq=500, #Mejora la estabilidad
 )
 dqn_config = dqn_config.resources(num_gpus=1)
-dqn_config = dqn_config.rollouts(num_rollout_workers=6)
+dqn_config = dqn_config.rollouts(num_rollout_workers=3)
 
 
 
@@ -45,7 +45,7 @@ env = SingleAgentEnv(env_config, "soccer")
 # Create algo instance
 algo = unray_config.configure_algo(dqn_config, env)
 
-#algo.restore(path) #= Algorithm.from_checkpoint(path)
+algo.restore(path) #= Algorithm.from_checkpoint(path)
 mean_ = []
 min_ = []
 max_ = []
