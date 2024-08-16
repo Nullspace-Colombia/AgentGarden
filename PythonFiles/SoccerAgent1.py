@@ -7,7 +7,7 @@ from ray.rllib.algorithms.algorithm import Algorithm
 import matplotlib.pyplot as plt
 
 high = np.array(
-    [10000]*30,
+    [10000]*36,
     dtype=np.float32,
 )
 
@@ -40,7 +40,8 @@ env_config = {
 unray_config = UnrayConfig()
 
 # Path
-path = "C:/Users/semil/Documents/modelos/Soccer/V20" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path = "C:/Users/semil/Documents/modelos/Soccer2/V3" #"E:/Universidad/Codigo/Nullspace/UE5/AgentGardenProject/Models/soccer-v2"
+path1 = "C:/Users/semil/Documents/modelos/Soccer2/V5"
 
 # Create instance of single agent environment
 env = SingleAgentEnv(env_config, "car_env")
@@ -58,9 +59,6 @@ episodes = []
 for i in range (100):
     result = algo.train()
     print("Episodio:"f" '{i}'")
-    mean_.append(result['episode_reward_mean'])
-    min_.append(result['episode_reward_min'])
-    max_.append(result['episode_reward_max'])
     episodes.append(result['episodes_total'])
     print(result)
     print(len(min_))
@@ -68,6 +66,7 @@ for i in range (100):
     if i % 5 == 0:
 
         save_result = algo.save(path)#("C:/Users/gonza/AppData/Local/Temp/tmp10hjh2wd")
+        save_result1 = algo.save(path1)
         print("An Algorithm checkpoint has been created inside directory: "f"'{save_result}'.")
 
         iters = [j for j in range(i+1)]
