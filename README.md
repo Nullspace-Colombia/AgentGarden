@@ -192,9 +192,9 @@ In the Event Graph of your env blueprint class, you'll have to do a few things t
 
 First, each env you create will have an ID (which defaults to 1). You can either set this parameter in the Details pannel of your map or create a function to set it automatically.
 
-Then, you need to add the agents in your env to an ```Agents``` array, which belongs to the ```MultiAgent_Env``` class. To do so, simply search for the ```Get Agents``` function and add each of your agents to this array. For example, in the MultiAgent Arena map it looks like this:
+Then, you need to add the agents in your env to an ```AgentsInfo``` array, which belongs to the ```MultiAgent_Env``` class. To do so, simply search for the ```Get AgentsInfo ``` function and add each of your agents to this array. For example, in the MultiAgent Arena map it looks like this:
 
-![AddAgents](https://github.com/Nullspace-Colombia/Multiagents/assets/55969494/7f6670bc-7bc0-4163-b854-652bcefdb9b3)
+![image](https://github.com/user-attachments/assets/bf458209-2854-4229-b965-32c2204bb551)
 
 Finally, you'll have to add the following functions to your env class: 
 
