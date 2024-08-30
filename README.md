@@ -126,11 +126,19 @@ If your environment is a single agent env, place a ```Connector_SA``` instance i
 
 ### MultiAgent Environments
 
-If your environment is a multiagent env, you'll need to place a ```Connector_MA``` instance in your map. Once you do, you can select it and in the details panel you'll find the Default section. There, you'll find an array called Actor Agents. 
+If your environment is a multiagent env, you'll need to place a ```Connector_MA``` instance in your map. Once you do, you can select it and in the details panel you'll find the Unray section. There, you'll find an array called Actor Agents. 
+For each agent, you need to add one element. Each element is a structure with two values: the actor (your agent) and an Action Space Shape, which is a String value containing the shape of the action space, just like the one you declare in the python file. 
 
-![ConnectorMA_Panel](https://github.com/Nullspace-Colombia/Multiagents/assets/55969494/5989c256-024c-4386-b8c5-a585d493488f)
+You can see an example with the MultiAgent Arena Environment.
 
-To ensure the framework can recognise all the agents in your environment, add each agent to the array. 
+![Multiagents](https://github.com/user-attachments/assets/f92b5416-cf61-44da-bb3e-d89b7194e915)
+
+#### Other examples
+
+Let's say your agents have a multidiscrete Action Space: MultiDiscrete([3,2])
+The value in ```Action Space Shape``` would look like this: 
+
+![image](https://github.com/user-attachments/assets/29d0badf-b333-473a-8266-5b9af5b6e37c)
 
 Remember that for each agent in your env, you'll have to implement the Reward, Done, Reset, Get State and Step functions.
 
