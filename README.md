@@ -197,6 +197,16 @@ Then, you need to add the agents in your env to an ```AgentsInfo``` array, which
 
 ![image](https://github.com/user-attachments/assets/bf458209-2854-4229-b965-32c2204bb551)
 
+You'll see the ```add``` function looks like this:
+
+![image](https://github.com/user-attachments/assets/2545cbbb-5048-490c-981b-b3bec723147f)
+
+To get both the agent and the Action Space Shape pins, right clik on the blue pin, and click "Split Structure Pin" 
+
+![Add](https://github.com/user-attachments/assets/3537b431-6a9d-4424-a9df-3d297b5e8d6a)
+
+![SplitStruct](https://github.com/user-attachments/assets/e9280e1d-56f3-4573-ae2b-996c14002b22)
+
 Finally, you'll have to add the following functions to your env class: 
 
 ![MultiAgentEnv](https://github.com/Nullspace-Colombia/Multiagents/assets/55969494/ba178e2f-6dc9-4fd0-9d7a-61f71d9e06ef)
